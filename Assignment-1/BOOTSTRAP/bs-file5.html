@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+
+  <div class="container bg-white p-2 rounded shadow" style="max-width: 600px;">
+    <h2 class="text-center mb-4">User Registration Form</h2>
+
+    <form id="myForm" novalidate>
+      <!-- First Name -->
+      <div class="mb-3 row d-flex justify-content-center">
+        <label class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter First Name"
+              required>
+            <div class="invalid-feedback">Please enter your first name.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="mb-3 row d-flex justify-content-center">
+        <label class="col-sm-2 col-form-label">Last Name</label>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter Last Name"
+              required>
+            <div class="invalid-feedback">Please enter your last name.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3 row d-flex justify-content-center">
+        <label class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" required>
+            <div class="invalid-feedback">Please enter a valid email.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="mb-3 row d-flex justify-content-center">
+        <label class="col-sm-2 col-form-label">Phone</label>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+            <input type="number" id="phone" name="phone" class="form-control" placeholder="Enter Phone Number"
+              pattern="[0-9]{10}" inputmode="numeric" required>
+            <div class="invalid-feedback">Please enter your phone number.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="mb-3 row d-flex justify-content-center">
+        <label class="col-sm-2 col-form-label">Address</label>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-house"></i></span>
+            <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address" required>
+            <div class="invalid-feedback">Please enter your address.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- City -->
+      <div class="mb-3 row d-flex justify-content-center">
+        <label class="col-sm-2 col-form-label">City</label>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-buildings"></i></span>
+            <input type="text" id="city" name="city" class="form-control" placeholder="Enter City" required>
+            <div class="invalid-feedback">Please enter your city.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- State Selection -->
+      <div class="mb-3 row d-flex justify-content-center">
+        <label class="col-sm-2 col-form-label">State</label>
+        <div class="col-sm-5">
+          <select id="state" name="state" class="form-select">
+            <option value="" selected>Select State</option>
+            <option value="MP">Madhya Pradesh</option>
+            <option value="HR">Haryana</option>
+            <option value="UK">Uttarakhand</option>
+            <option value="UP">Uttar Pradesh</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="mb-3 row d-flex justify-content-center">
+        <label class="col-sm-2 col-form-label">Gender</label>
+        <div class="col-sm-5">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" value="Male" >
+            <label class="form-check-label">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" value="Female" >
+            <label class="form-check-label">Female</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" value="Other" >
+            <label class="form-check-label">Other</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- About (Textarea) -->
+      <div class="mb-3 row d-flex justify-content-center">
+        <label class="col-sm-2 col-form-label">About</label>
+        <div class="col-sm-5">
+          <textarea id="about" name="about" class="form-control" rows="3" placeholder="Tell us about yourself"
+            ></textarea>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+    </form>
+
+  </div>
+  <script>
+    document.getElementById("myForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      let form = this;
+
+      if (!form.checkValidity()) {
+        event.stopPropagation();
+      }
+
+      form.classList.add("was-validated");
+    });
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        width: 320px;
+        padding: 20px;
+        text-align: center;
+        background: white;
+        border-radius: 10px;
+      }
+
+      .container img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 15px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 93%;
+        padding: 10px;
+        margin-top: 5px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .login-btn {
+        background-color: rgb(158, 134, 91);
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      label {
+        font-size: 16px;
+        color: #333;
+        display: flex;
+        align-items: center;
+      }
+
+      .cancel-btn {
+        background-color: rgb(51, 53, 32);
+        color: white;
+        width: 40%;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .forget {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .checkbox {
+        margin-right: 10px;
+        width: auto;
+        height: auto;
+        vertical-align: middle;
+      }
+
+      .forgot-password {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Task 6</h1>
+      <img src="/Image/profile-img.png" alt="User Image" />
+
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" placeholder="Enter Username" />
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="Enter Password" />
+      </div>
+
+      <button class="login-btn">Login</button>
+
+      <label><input type="checkbox" class="checkbox" />Remember me</label>
+      <div class="forget">
+        <button class="cancel-btn">Cancel</button>
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+    </div>
+  </body>
+</html>

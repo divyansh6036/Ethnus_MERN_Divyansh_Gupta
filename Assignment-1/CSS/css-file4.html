@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoverable Side Navigation</title>
+    <style>
+      .sidenav {
+        height: 100vh;
+        width: 80px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        padding-top: 20px;
+      }
+      .paragraph {
+        padding-left: 150px;
+      }
+      .sidenav a {
+        display: block;
+        text-decoration: none;
+        padding: 15px;
+        font-size: 18px;
+        color: white;
+        width: 90px;
+        transition: width 0.3s ease-in-out;
+        text-align: center;
+        margin: 10px 0;
+        border-radius: 10px;
+      }
+
+      .sidenav a:nth-child(1) {
+        background-color: #ff5733;
+      }
+
+      .sidenav a:nth-child(2) {
+        background-color: #2ec74a;
+      }
+
+      .sidenav a:nth-child(3) {
+        background-color: #3357ff;
+      }
+
+      .sidenav a:nth-child(4) {
+        background-color: #ff33a1;
+      }
+
+      .sidenav a:hover {
+        width: 150px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 align="center">Task 4</h1>
+    <div class="sidenav">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="paragraph">
+      <h2>Hoverable Navigation button.</h2>
+      <p>Hover over the button in the side left navigation bar to open them.</p>
+    </div>
+  </body>
+</html>

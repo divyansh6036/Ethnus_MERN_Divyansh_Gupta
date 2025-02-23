@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Styled Table</title>
+    <style>
+      table {
+        width: 50%;
+        border-collapse: separate;
+        border-spacing: 10px;
+        background-color: rgb(103, 134, 219);
+        margin: 50px auto;
+        padding: 2px;
+        border-radius: 10px;
+      }
+
+      td {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        background-color: rgb(103, 134, 219);
+        border: 2px solid black;
+        border-radius: 30px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      th.one {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        background-color: rgb(103, 134, 219);
+        border: 2px solid black;
+        border-radius: 15px;
+        font-size: 18px;
+        font-weight: normal;
+      }
+
+      th.two {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        background-color: rgb(103, 134, 219);
+        border: 2px solid black;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: normal;
+      }
+
+      th.three {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        background-color: rgb(103, 134, 219);
+        border: 2px solid black;
+        border-radius: 20px;
+        font-size: 18px;
+        font-weight: normal;
+      }
+
+      th.four {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        background-color: rgb(103, 134, 219);
+        border: 2px solid black;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: normal;
+      }
+
+      th.five {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        background-color: rgb(103, 134, 219);
+        border: 2px solid black;
+        border-top-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        border-top-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        font-size: 18px;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 align="center">Task 1</h1>
+    <table>
+      <tr>
+        <td>FirstName:</td>
+        <td>LastName:</td>
+        <td>Age:</td>
+      </tr>
+      <tr>
+        <th class="one">Jill</th>
+        <th class="one">Smith</th>
+        <th class="three">50</th>
+      </tr>
+      <tr>
+        <th class="one">Eve</th>
+        <th class="two">Jackson</th>
+        <th class="three">94</th>
+      </tr>
+      <tr>
+        <th class="four">John</th>
+        <th class="two">Dow</th>
+        <th class="five">90</th>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My First Styled Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background-color: rgb(205, 177, 21);
+        width: 70%;
+        height: auto;
+        min-height: 60vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .left {
+        width: 30%;
+        height: 50vh;
+        padding: 20px;
+        color: white;
+        position: relative;
+      }
+
+      .nav a {
+        display: block;
+        color: blue;
+        text-decoration: none;
+        padding: 10px;
+        margin: 5px 0;
+        background-color: white;
+      }
+
+      .nav a:hover {
+        color: purple;
+      }
+
+      .right {
+        width: 70%;
+        padding: 20px;
+      }
+
+      .right {
+        color: #88095a;
+      }
+
+      .right p {
+        font-size: 18px;
+      }
+
+      .ita {
+        font-style: italic;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Task 5</h1>
+      <div class="left">
+        <div class="nav">
+          <a href="#">Home Page</a>
+          <a href="#">Musings</a>
+          <a href="#">My town</a>
+          <a href="#">Links</a>
+        </div>
+      </div>
+
+      <div class="right">
+        <h1>My First Styled Page</h1>
+        <p>Welcome to my styled page!</p>
+        <p>
+          It lacks images, but at least it has style. And it has links, even if
+          they don't go anywhere.
+        </p>
+        <p>There should be more here, but I don't know what yet.</p>
+        <p>------------------------------------------------------------</p>
+        <p class="ita">Made 20 Feburary 2025</p>
+        <p class="ita">by myself.</p>
+      </div>
+    </div>
+  </body>
+</html>
