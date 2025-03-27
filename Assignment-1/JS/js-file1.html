@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Reversal</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        margin-top: 50px;
+        background-color: #f0f2f5;
+      }
+
+      .container {
+        max-width: 350px;
+        margin: auto;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      h2 {
+        color: #333;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background: #007bff;
+        color: white;
+        font-size: 1em;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+
+      .result {
+        margin-top: 15px;
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #222;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Number Reversal</h2>
+      <input type="text" id="numberInput" placeholder="Enter a number" />
+      <button onclick="reverseNumber()">Reverse</button>
+      <div class="result" id="result"></div>
+    </div>
+
+    <script>
+      document
+        .getElementById("numberInput")
+        .addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            reverseNumber();
+          }
+        });
+
+      function reverseNumber() {
+        let inputField = document.getElementById("numberInput");
+        let resultField = document.getElementById("result");
+        let numberInput = inputField.value.trim();
+
+        if (numberInput === "" || isNaN(numberInput)) {
+          resultField.textContent = "Please enter a valid number!";
+          resultField.style.color = "red";
+          return;
+        }
+
+        let num = parseFloat(numberInput);
+        let isNegative = num < 0;
+        let reversedString = Math.abs(num)
+          .toString()
+          .split("")
+          .reverse()
+          .join("");
+
+        // Ensure decimals are properly placed
+        if (reversedString.includes(".")) {
+          reversedString = reversedString.replace(/^0+/, "");
+        }
+
+        let reversedNumber = parseFloat(reversedString) * (isNegative ? -1 : 1);
+        resultField.style.color = "#222";
+        resultField.textContent = `Reversed Number: ${reversedNumber}`;
+      }
+    </script>
+  </body>
+</html>

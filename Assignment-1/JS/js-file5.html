@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        text-align: left;
+      }
+
+      h2 {
+        color: #333;
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      .error {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .error-border {
+        border: 2px solid red;
+      }
+
+      button {
+        padding: 12px;
+        background: #007bff;
+        color: white;
+        font-size: 1em;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        transition: background 0.3s ease-in-out;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Contact Form</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your Name" />
+          <span class="error" id="nameError">Name is required!</span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Your Email" />
+          <span class="error" id="emailError">Invalid email format!</span>
+        </div>
+        <div class="form-group">
+          <label for="website">Website</label>
+          <input type="url" id="website" placeholder="Your Website URL" />
+          <span class="error" id="websiteError">Invalid URL!</span>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Your Message" rows="4"></textarea>
+          <span class="error" id="messageError">Message is required!</span>
+        </div>
+        <button type="button" onclick="validateForm()">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      function validateEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+      }
+
+      function validateURL(url) {
+        const urlPattern = /^(https?:\/\/|www\.)[^\s$.?#].[^\s]*$/;
+        return urlPattern.test(url);
+      }
+
+      function validateField(input, errorSpan, validationFunction = null) {
+        let value = input.value.trim();
+        if (!value) {
+          errorSpan.style.display = "block";
+          input.classList.add("error-border");
+          return false;
+        } else if (validationFunction && !validationFunction(value)) {
+          errorSpan.style.display = "block";
+          input.classList.add("error-border");
+          return false;
+        } else {
+          errorSpan.style.display = "none";
+          input.classList.remove("error-border");
+          return true;
+        }
+      }
+
+      function validateForm() {
+        let name = document.getElementById("name");
+        let email = document.getElementById("email");
+        let website = document.getElementById("website");
+        let message = document.getElementById("message");
+
+        let nameError = document.getElementById("nameError");
+        let emailError = document.getElementById("emailError");
+        let websiteError = document.getElementById("websiteError");
+        let messageError = document.getElementById("messageError");
+
+        let isValid = true;
+
+        isValid &= validateField(name, nameError);
+        isValid &= validateField(email, emailError, validateEmail);
+        isValid &= validateField(website, websiteError, validateURL);
+        isValid &= validateField(message, messageError);
+
+        if (isValid) {
+          alert("Form submitted successfully!");
+          document.getElementById("contactForm").reset();
+          document
+            .querySelectorAll(".error")
+            .forEach((error) => (error.style.display = "none"));
+          document
+            .querySelectorAll("input, textarea")
+            .forEach((input) => input.classList.remove("error-border"));
+        }
+      }
+
+      document.querySelectorAll("input, textarea").forEach((input) => {
+        input.addEventListener("input", () => {
+          validateForm();
+        });
+      });
+    </script>
+  </body>
+</html>

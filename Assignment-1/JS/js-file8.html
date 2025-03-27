@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+      }
+
+      .container {
+        width: 400px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        margin: 50px auto;
+      }
+
+      h2 {
+        color: #333;
+      }
+
+      label {
+        display: block;
+        margin-top: 10px;
+        text-align: left;
+        font-weight: bold;
+      }
+
+      .input-group {
+        position: relative;
+        width: 100%;
+      }
+
+      .input-group input,
+      select {
+        width: 90%;
+        padding: 8px;
+        padding-left: 30px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .error {
+        color: red;
+        font-size: 12px;
+        text-align: left;
+        margin-top: 2px;
+      }
+
+      .checkbox-group {
+        text-align: left;
+      }
+
+      button {
+        width: 100%;
+        background-color: green;
+        color: white;
+        padding: 10px;
+        border: none;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: darkgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Registration Form</h2>
+      <form id="registrationForm">
+        <label>First Name</label>
+        <input type="text" id="firstName" />
+        <span class="error" id="errorFirstName"></span>
+
+        <label>Last Name</label>
+        <input type="text" id="lastName" />
+        <span class="error" id="errorLastName"></span>
+
+        <label>Email</label>
+        <input type="email" id="email" />
+        <span class="error" id="errorEmail"></span>
+
+        <label>Password</label>
+        <input type="password" id="password" />
+        <span class="error" id="errorPassword"></span>
+
+        <label>Re-enter Password</label>
+        <input type="password" id="rePassword" />
+        <span class="error" id="errorRePassword"></span>
+
+        <label>Gender</label>
+        <div class="checkbox-group">
+          <input type="radio" name="gender" value="Male" /> Male
+          <input type="radio" name="gender" value="Female" /> Female
+        </div>
+        <span class="error" id="errorGender"></span>
+
+        <label>Phone Number</label>
+        <input type="text" id="phone" />
+        <span class="error" id="errorPhone"></span>
+
+        <label>State</label>
+        <input type="text" id="state" />
+        <span class="error" id="errorState"></span>
+
+        <label>Country</label>
+        <select id="country">
+          <option value="">Select Country</option>
+          <option value="India">India</option>
+          <option value="USA">USA</option>
+          <option value="Russia">Russia</option>
+        </select>
+        <span class="error" id="errorCountry"></span>
+
+        <label>Language Known</label>
+        <div class="checkbox-group">
+          <input type="checkbox" name="language" value="Hindi" /> Hindi
+          <input type="checkbox" name="language" value="English" /> English
+          <input type="checkbox" name="language" value="Kannada" /> Kannada
+          <input type="checkbox" name="language" value="Telugu" /> Telugu
+        </div>
+        <span class="error" id="errorLanguage"></span>
+
+        <label>
+          <input type="checkbox" id="declaration" /> I declare all details are
+          true
+        </label>
+        <span class="error" id="errorDeclaration"></span>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let isValid = true;
+
+          function validateField(id, condition, message) {
+            if (condition) {
+              document.getElementById(id).innerText = "";
+            } else {
+              document.getElementById(id).innerText = message;
+              isValid = false;
+            }
+          }
+
+          let firstName = document.getElementById("firstName").value.trim();
+          let lastName = document.getElementById("lastName").value.trim();
+          let email = document.getElementById("email").value.trim();
+          let password = document.getElementById("password").value.trim();
+          let rePassword = document.getElementById("rePassword").value.trim();
+          let phone = document.getElementById("phone").value.trim();
+          let state = document.getElementById("state").value.trim();
+          let country = document.getElementById("country").value;
+          let declaration = document.getElementById("declaration").checked;
+          let gender = document.querySelector('input[name="gender"]:checked');
+          let languages = document.querySelectorAll(
+            'input[name="language"]:checked'
+          );
+
+          validateField(
+            "errorFirstName",
+            firstName !== "",
+            "First name is required"
+          );
+          validateField(
+            "errorLastName",
+            lastName !== "",
+            "Last name is required"
+          );
+          validateField(
+            "errorEmail",
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
+            "Enter a valid email"
+          );
+          validateField(
+            "errorPassword",
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(password),
+            "Password must be at least 6 characters, with 1 uppercase, 1 lowercase & 1 number"
+          );
+          validateField(
+            "errorRePassword",
+            password === rePassword,
+            "Passwords do not match"
+          );
+          validateField("errorGender", gender !== null, "Select a gender");
+          validateField(
+            "errorPhone",
+            /^\d{10}$/.test(phone),
+            "Enter a valid 10-digit phone number"
+          );
+          validateField("errorState", state !== "", "Enter a state");
+          validateField("errorCountry", country !== "", "Select a country");
+          validateField(
+            "errorLanguage",
+            languages.length > 0,
+            "Select at least one language"
+          );
+          validateField(
+            "errorDeclaration",
+            declaration,
+            "You must accept the declaration"
+          );
+
+          if (isValid) {
+            alert("Registration Successful!");
+          }
+        });
+    </script>
+  </body>
+</html>

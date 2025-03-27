@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alphabetical Order</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        margin-top: 40px;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      h2 {
+        color: #333;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background: #034c8f;
+        color: white;
+        font-size: 1em;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+      }
+
+      button:hover {
+        background: #0098b3;
+      }
+
+      .result {
+        margin-top: 15px;
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #222;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Sort Letters Alphabetically</h2>
+      <input type="text" id="textInput" placeholder="Enter a word" />
+      <button onclick="sortAlphabetically()">Sort</button>
+      <div class="result" id="result"></div>
+    </div>
+
+    <script>
+      document
+        .getElementById("textInput")
+        .addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            sortAlphabetically();
+          }
+        });
+
+      function sortAlphabetically() {
+        let inputField = document.getElementById("textInput");
+        let resultField = document.getElementById("result");
+        let textInput = inputField.value.trim();
+
+        if (textInput === "") {
+          resultField.textContent = "Please enter a valid word!";
+          resultField.style.color = "red";
+          return;
+        }
+
+        if (!/^[a-zA-Z]+$/.test(textInput)) {
+          resultField.textContent = "Only letters are allowed!";
+          resultField.style.color = "red";
+          return;
+        }
+
+        let sortedText = textInput.toLowerCase().split("").sort().join("");
+
+        resultField.style.color = "#222";
+        resultField.textContent = `Sorted Word: ${sortedText}`;
+      }
+    </script>
+  </body>
+</html>
